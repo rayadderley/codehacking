@@ -18,3 +18,6 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+// Creating Route for Admin folder managing User
+Route::resource('/admin/users', 'AdminUsersController');

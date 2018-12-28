@@ -1,0 +1,8 @@
+Laravel Start
+	1. install laravel
+	2. php artisan make:auth
+	3. create views
+	4. migration
+	5. Create relation (1-1, 1-M, M-M) & Test using Tinker
+	6. Create controller for specific function - eg Controller for Admin Managing User Information -- php artisan make:controller --resource AdminUsersController
+	7. Create Route for the AdminUsersController -- Route::resource('admin/users', 'AdminUsersController'); & Test the route by returning View in the controller.
