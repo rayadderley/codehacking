@@ -1,2 +1,6 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// Adding a master css that will override all css.
 
+#admin-page {
+    padding-top:0px;
+}
