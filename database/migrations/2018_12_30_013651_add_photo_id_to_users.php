@@ -3,6 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+// Note: Adding Migration to Users table: php artisan make:migration add_photo_id_to_users --table=users
 class AddPhotoIdToUsers extends Migration
 {
     /**
@@ -14,6 +15,7 @@ class AddPhotoIdToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            $table->string('photo_id');
         });
     }
 
@@ -26,6 +28,7 @@ class AddPhotoIdToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            $table->dropColumn('photo_id');
         });
     }
 }
