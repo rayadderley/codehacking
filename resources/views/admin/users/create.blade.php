@@ -3,6 +3,10 @@
 @section('content')
 
     <h1>Create User</h1>
+    
+    <div class="class row">
+        @include('includes.form_error')
+    </div>
 
     {!! Form::open(['method' => 'POST', 'action' => 'AdminUsersController@store', 'files' => true]) !!}
         <div class='form-group'>
@@ -30,11 +34,9 @@
                 {!! Form::password('password', ['class' => 'form-control']) !!}
             </div>
         <div class='form-group'>
-            {!! Form::submit('Create User', ['class'=>'btn btn-primary']) !!}
+            {!! Form::submit('Create User', ['class'=>'btn btn-primary col-sm-6']) !!}
         </div>
     {!! Form::close() !!}
-    
-    @include('includes.form_error')
 
 @endsection
 

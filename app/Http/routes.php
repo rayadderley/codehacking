@@ -23,5 +23,11 @@ Route::get('/home', 'HomeController@index');
 Route::get('/admin', function(){
     return view('admin.index');
 });
-// Creating Route for Admin folder managing User
-Route::resource('/admin/users', 'AdminUsersController');
+
+// Security for admin
+Route::group(['middleware'=>'admin'], function(){
+    // Creating Route for Admin folder managing User
+    Route::resource('/admin/users', 'AdminUsersController');
+
+    Route::resource('/admin/posts', 'AdminPostsController');
+});
