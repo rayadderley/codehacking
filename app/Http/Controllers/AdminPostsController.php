@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
 use App\Post;
-
+use App\Photo;
 use App\Http\Requests\PostsCreateRequest;
+use Illuminate\Support\Facades\Auth;
 
 class AdminPostsController extends Controller
 {
@@ -37,13 +36,33 @@ class AdminPostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param PostsCreateRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(PostsCreateRequest $request)
     {
-        //
-        return $request->all();
+        // Get the User that logged in
+        $user = Auth::user();
+
+        $input = $request->all();
+
+        // Check if photo exist or not
+        if($file = $request->file('photo_id')){
+            // Check whether photo exist or not
+            //return "photo available";
+
+            $name = time() . $file->getClientOriginalName();
+
+            $file->move('images', $name);
+
+            $photo = Photo::create(['file'=>$name]);
+            
+            $input['photo_id'] = $photo->id;
+        }
+
+        $user->posts()->create($input);
+
+        return redirect('/admin/posts');
     }
 
     /**
