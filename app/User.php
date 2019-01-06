@@ -39,7 +39,7 @@ class User extends Authenticatable
     }
 
     /**
-     * 
+     * Check if the user is admin & active for security in Middleware
      */
     public function isAdmin(){
         if($this->role->name == "administrator" && $this->is_active == 1){
@@ -47,5 +47,12 @@ class User extends Authenticatable
         }
 
         return false;
+    }
+
+    /**
+     * One User has many posts 
+     */
+    public function posts(){
+        return $this->hasMany('App\Post');
     }
 }

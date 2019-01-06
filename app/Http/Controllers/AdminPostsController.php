@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Post;
+
+use App\Http\Requests\PostsCreateRequest;
+
 class AdminPostsController extends Controller
 {
     /**
@@ -15,7 +19,8 @@ class AdminPostsController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -26,6 +31,7 @@ class AdminPostsController extends Controller
     public function create()
     {
         //
+        return view('admin.posts.create');
     }
 
     /**
@@ -34,9 +40,10 @@ class AdminPostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostsCreateRequest $request)
     {
         //
+        return $request->all();
     }
 
     /**
