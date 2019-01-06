@@ -164,6 +164,9 @@ class AdminUsersController extends Controller
         // Find the photo of the user to delete the photo together
         unlink(public_path() . $user->photo->file);
 
+        // Delete the user
+        $user->delete();
+
         // Create Session to display Flash Message
         Session::flash('deleted_user', 'The user has been deleted');
         
