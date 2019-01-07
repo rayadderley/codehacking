@@ -29,5 +29,8 @@ Route::group(['middleware'=>'admin'], function(){
     // Creating Route for Admin folder managing User
     Route::resource('/admin/users', 'AdminUsersController');
 
+    // Route for Admin to manage Post
     Route::resource('/admin/posts', 'AdminPostsController');
+
+    Route::resource('/admin/categories', 'AdminCategoriesController');
 });
