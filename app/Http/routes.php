@@ -36,6 +36,10 @@ Route::group(['middleware'=>'admin'], function(){
 
     Route::resource('/admin/media', 'AdminMediasController');
 
-    //Custom Route
-    Route::get('admin/media/upload', ['as'=>'admin.media.upload', 'uses'=>'AdminMediasController@store']);
+    //Custom Route - can also create by using function: refer in earlier videos
+    //Route::get('admin/media/upload', ['as'=>'admin.media.upload', 'uses'=>'AdminMediasController@store']);
+
+    Route::resource('/admin/comments', 'PostCommentsController');
+
+    Route::resource('/admin/comments/replies', 'CommentRepliesController');
 });
