@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\CommentReply;
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Post;
 use App\Photo;
 use App\Http\Requests\PostsCreateRequest;
@@ -146,5 +146,19 @@ class AdminPostsController extends Controller
         Session::flash('deleted_post', 'The post has been deleted');
 
         return redirect('/admin/posts');
+    }
+
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function post($id)
+    {
+        $post = Post::findOrFail($id);
+
+        $comments = $post->comments()->whereIsActive(1)->get();
+
+        return view('post', compact('post', 'comments', 'replies'));
     }
 }
